@@ -31,6 +31,11 @@ export default function HomeRoot() {
             <ContentDrawer title="Gerenciar aerogeradores">
               <AeroGeneratorsList />
             </ContentDrawer>
+
+            <ContentDrawer
+              title="Mapa dos aerogeradores"
+              extraAction={() => {}}
+            ></ContentDrawer>
           </View>
         </View>
       </ContentWrapper>

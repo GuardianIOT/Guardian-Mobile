@@ -49,7 +49,7 @@ export default function HomeLayout() {
         name="my-store"
         options={{
           headerShown: false,
-          tabBarLabel: "Minha loja",
+          tabBarLabel: "Métricas",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="pie-chart" color={color} size={size} />
           ),

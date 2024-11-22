@@ -12,7 +12,7 @@ export default function MyStore() {
       <ContentWrapper
         headerContent={
           <View style={styles.header}>
-            <StyledText style={styles.headerName}>Minha loja</StyledText>
+            <StyledText style={styles.headerName}>Métricas</StyledText>
           </View>
         }
       >
