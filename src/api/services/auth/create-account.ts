@@ -1,4 +1,4 @@
-import { api } from "../..";
+import { api } from '../..'
 
 export const createAccount = async ({
   firstName,
@@ -6,33 +6,20 @@ export const createAccount = async ({
   email,
   password,
 }: {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
+  firstName: string
+  lastName: string
+  email: string
+  password: string
 }) => {
   const reqObj = {
-    nome: `${firstName} ${lastName}`,
+    nome: firstName,
+    sobrenome: lastName,
     email,
     senha: password,
+    idCompanhia: 0,
+  }
 
-    // Below data are mocked due to time limitations
-    dataDeNasciemto: "2002-05-01",
-    sexo: "FEMININO",
-    cpf: "7777777777777",
-    estadoCivil: "CASADO",
-    nivelEducacional: "SUPERIOR_GRADUACAO",
-    rendaAnual: 100000.5,
-    ocupacao: "EMPREGADO",
-    endereco: {
-      cep: "04689070",
-      rua: "Rua Amoipira",
-      numero: 201,
-      complemento: "Condomínio",
-    },
-  };
+  console.log(reqObj)
 
-  console.log(reqObj);
-
-  await api.post("/usuario/cadastro", reqObj);
-};
+  await api.post('/usuario', reqObj)
+}

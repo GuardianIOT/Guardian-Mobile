@@ -1,8 +1,8 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import {
-    DarkTheme,
-    DefaultTheme,
-    ThemeProvider,
+  DarkTheme,
+  DefaultTheme,
+  ThemeProvider,
 } from '@react-navigation/native'
 import { useFonts } from 'expo-font'
 import { Stack } from 'expo-router'
@@ -16,53 +16,46 @@ import { AuthProvider } from '../contexts/AuthContext'
 export { ErrorBoundary } from 'expo-router'
 
 export const unstable_settings = {
-    initialRouteName: '(root)',
+  initialRouteName: '(root)',
 }
 
 SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
-    const [loaded, error] = useFonts({
-        DMSans: require('../../assets/fonts/DMSans-Regular.ttf'),
-        ...FontAwesome.font,
-    })
+  const [loaded, error] = useFonts({
+    DMSans: require('../../assets/fonts/DMSans-Regular.ttf'),
+    ...FontAwesome.font,
+  })
 
-    useEffect(() => {
-        if (error) throw error
-    }, [error])
+  useEffect(() => {
+    if (error) throw error
+  }, [error])
 
-    useEffect(() => {
-        if (loaded) {
-            SplashScreen.hideAsync()
-        }
-    }, [loaded])
-
-    if (!loaded) {
-        return null
+  useEffect(() => {
+    if (loaded) {
+      SplashScreen.hideAsync()
     }
+  }, [loaded])
 
-    return <RootLayoutNav />
+  if (!loaded) {
+    return null
+  }
+
+  return <RootLayoutNav />
 }
 
 function RootLayoutNav() {
-    const colorScheme = useColorScheme()
+  const colorScheme = useColorScheme()
 
-    return (
-        <AuthProvider>
-            <ThemeProvider
-                value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
-            >
-                <Stack>
-                    <Stack.Screen
-                        name="(auth)"
-                        options={{ headerShown: false }}
-                    />
-                    <Stack.Screen
-                        name="(root)"
-                        options={{ headerShown: false }}
-                    />
-                </Stack>
-            </ThemeProvider>
-        </AuthProvider>
-    )
+  return (
+    <AuthProvider>
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <Stack>
+          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+          <Stack.Screen name="(root)" options={{ headerShown: false }} />
+          <Stack.Screen name="aerogenerator" options={{ headerShown: false }} />
+        </Stack>
+      </ThemeProvider>
+    </AuthProvider>
+  )
 }

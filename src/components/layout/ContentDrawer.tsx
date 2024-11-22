@@ -1,12 +1,12 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
-import { StyledText } from "../shared/StyledText";
-import Colors from "@/src/constants/Colors";
+import React from 'react'
+import { StyleSheet, View } from 'react-native'
+import { StyledText } from '../shared/StyledText'
+import Colors from '@/src/constants/Colors'
 
 interface ContentDrawerProps {
-  title?: string;
-  extraAction?: () => void;
-  children?: React.ReactNode;
+  title?: string
+  extraAction?: React.ReactNode
+  children?: React.ReactNode
 }
 
 export default function ContentDrawer({
@@ -21,34 +21,32 @@ export default function ContentDrawer({
         <View style={styles.header}>
           <StyledText style={styles.headerTitle}>{title}</StyledText>
 
-          {extraAction && (
-            <StyledText style={styles.headerExtraAction}>Ver mais</StyledText>
-          )}
+          {extraAction}
         </View>
       )}
 
       {/* Content */}
       {children}
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
     padding: 12,
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: "#ebebeb",
-    display: "flex",
+    borderColor: '#ebebeb',
+    display: 'flex',
     gap: 20,
   },
 
   header: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 
   headerTitle: {
@@ -59,4 +57,4 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: Colors.primary,
   },
-});
+})

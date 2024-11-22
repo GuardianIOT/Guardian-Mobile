@@ -1,14 +1,14 @@
-import Colors from "@/src/constants/Colors";
-import { Ionicons } from "@expo/vector-icons";
-import { Stack, Tabs } from "expo-router";
-import React from "react";
+import Colors from '@/src/constants/Colors'
+import { Ionicons } from '@expo/vector-icons'
+import { Stack, Tabs } from 'expo-router'
+import React from 'react'
 
 function HomeStack() {
   return (
     <Stack>
       <Stack.Screen name="product" options={{ headerShown: false }} />
     </Stack>
-  );
+  )
 }
 
 export default function HomeLayout() {
@@ -17,14 +17,14 @@ export default function HomeLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors.primary,
         tabBarShowLabel: false,
-        tabBarInactiveTintColor: "gray",
+        tabBarInactiveTintColor: 'gray',
         tabBarStyle: {
-          position: "absolute",
+          position: 'absolute',
           height: 60,
           margin: 10,
           borderRadius: 20,
           borderTopWidth: 0,
-          backgroundColor: "white",
+          backgroundColor: 'white',
         },
       }}
     >
@@ -32,14 +32,14 @@ export default function HomeLayout() {
         name="index"
         options={{
           headerShown: false,
-          tabBarLabel: "Página principal",
+          tabBarLabel: 'Página principal',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home-sharp" color={color} size={size} />
           ),
         }}
       />
       <Tabs.Screen
-        name="product"
+        name="map"
         options={{
           headerShown: false,
           tabBarButton: () => null,
@@ -49,7 +49,7 @@ export default function HomeLayout() {
         name="my-store"
         options={{
           headerShown: false,
-          tabBarLabel: "Métricas",
+          tabBarLabel: 'Métricas',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="pie-chart" color={color} size={size} />
           ),
@@ -59,12 +59,12 @@ export default function HomeLayout() {
         name="profile"
         options={{
           headerShown: false,
-          tabBarLabel: "Perfil",
+          tabBarLabel: 'Perfil',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="person" color={color} size={size} />
           ),
         }}
       />
     </Tabs>
-  );
+  )
 }
