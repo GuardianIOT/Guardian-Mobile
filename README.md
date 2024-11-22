@@ -58,6 +58,3 @@ npm run start
 ```
 
 ---
-
-Diagrama da arquitetura de pastas:
-https://app.eraser.io/workspace/FId1cLr9kZeqMhzxjRVx
