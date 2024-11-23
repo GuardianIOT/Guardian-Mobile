@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Colors from "@/src/constants/Colors";
+import { deleteAerogenerator } from "@/src/api/services/aerogenerator/delete-aerogenerator";
 
 const Aerogenerator = ({ route, navigation }) => {
   const aerogenerator = route?.params?.aerogenerator || {
@@ -35,8 +36,8 @@ const Aerogenerator = ({ route, navigation }) => {
           style: "destructive",
           onPress: async () => {
             try {
-              // Substitua esta lógica pela chamada à API ou lógica de exclusão
-              console.log(`Aerogerador ${aerogenerator.modelo} excluído`);
+              await deleteAerogenerator(aerogenerator.id);
+
               Alert.alert("Sucesso", "O aerogerador foi excluído com sucesso.");
               navigation.goBack(); // Voltar à tela anterior
             } catch (error) {
