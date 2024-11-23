@@ -2,19 +2,13 @@
 
 ## Integrantes do Grupo:
 
-### Representante/gestor do projeto:
-
 - **Bruno de Paula** (RM552226)
-
-### Líder Técnico:
 
 - **Kayque Lima** (RM550782)
 
-### Desenvolvedor Frontend/Mobile:
-
 - **Gabriel França** (RM551905)
-
-### Desenvolvedor/redator:
+  
+- **Gabriel Francisco** (RM99708)
 
 - **Edward de Lima** (RM98676)
 
