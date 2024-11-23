@@ -1,21 +1,21 @@
-import NoProductsFound from '@/src/components/cases/products/NoProductsFound'
-import RowAerogenerator from '@/src/components/cases/products/RowAerogenerator'
-import ContentDrawer from '@/src/components/layout/ContentDrawer'
-import ContentWrapper from '@/src/components/layout/ContentWrapper'
-import { StyledText } from '@/src/components/shared/StyledText'
-import Colors from '@/src/constants/Colors'
-import { useAuth } from '@/src/contexts/AuthContext'
-import { IAerogenerator } from '@/src/types/Aerogenerator'
-import { Ionicons } from '@expo/vector-icons'
-import { useNavigation, useRouter } from 'expo-router'
-import React, { useState } from 'react'
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import NoProductsFound from "@/src/components/cases/products/NoProductsFound";
+import RowAerogenerator from "@/src/components/cases/products/RowAerogenerator";
+import ContentDrawer from "@/src/components/layout/ContentDrawer";
+import ContentWrapper from "@/src/components/layout/ContentWrapper";
+import { StyledText } from "@/src/components/shared/StyledText";
+import Colors from "@/src/constants/Colors";
+import { useAuth } from "@/src/contexts/AuthContext";
+import { IAerogenerator } from "@/src/types/Aerogenerator";
+import { Ionicons } from "@expo/vector-icons";
+import { useNavigation, useRouter } from "expo-router";
+import React, { useState } from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 export default function HomeRoot() {
-  const { user } = useAuth()
-  const router = useRouter()
+  const { user } = useAuth();
+  const router = useRouter();
 
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.rootBackground }}>
@@ -23,7 +23,7 @@ export default function HomeRoot() {
         headerContent={
           <View style={styles.header}>
             <StyledText style={styles.headerName}>
-              Olá, {user?.nome.split(' ')[0]}
+              Olá, {user?.nome?.split(" ")[0] ?? "Bruno"}
             </StyledText>
           </View>
         }
@@ -36,7 +36,7 @@ export default function HomeRoot() {
               extraAction={
                 <TouchableOpacity
                   onPress={() =>
-                    router.push('/aerogenerator/create-aerogenerator')
+                    router.push("/aerogenerator/create-aerogenerator")
                   }
                 >
                   <Ionicons
@@ -49,57 +49,61 @@ export default function HomeRoot() {
             >
               <AeroGeneratorsList />
             </ContentDrawer>
-
-            <ContentDrawer title="Mapa"></ContentDrawer>
           </View>
         </View>
       </ContentWrapper>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 
   headerName: {
     fontSize: 24,
-    color: 'white',
+    color: "white",
   },
 
   content: {
-    display: 'flex',
+    display: "flex",
     gap: 20,
   },
-})
+});
 
 export function AeroGeneratorsList() {
+  const getAllAerogenerators = async () => {
+    try {
+      const response = await getAllAerogenerators();
+    } catch (err) {}
+  };
+
   const mockProducts: IAerogenerator[] = [
     {
       id: 1,
-      label: 'GE 2.3 MW 116',
-      location: 'São Paulo, SP',
+      label: "GE 2.3 MW 116",
+      location: "São Paulo, SP",
     },
     {
       id: 2,
-      label: 'GE 2.3 MW 117',
-      location: 'São Paulo, SP',
+      label: "TR 22.4 YO",
+      location: "Ribeirão Preto, SP",
     },
     {
       id: 3,
-      label: 'GE 2.3 MW 118',
-      location: 'São Paulo, SP',
+      label: "XER 2.2 ME",
+      location: "São Paulo, SP",
     },
-  ]
+  ];
 
   const [aerogenerators, setAerogenerators] =
-    useState<IAerogenerator[]>(mockProducts)
+    useState<IAerogenerator[]>(mockProducts);
 
   return (
-    <View style={{ display: 'flex', gap: 20 }}>
+    <View style={{ display: "flex", gap: 20 }}>
       {aerogenerators.length === 0 ? (
         <NoProductsFound />
       ) : (
@@ -111,5 +115,5 @@ export function AeroGeneratorsList() {
         ))
       )}
     </View>
-  )
+  );
 }

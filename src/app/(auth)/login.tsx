@@ -1,31 +1,31 @@
-import { ActivityIndicator, StyleSheet, View } from 'react-native'
-import Button from '@/src/components/shared/Button'
-import Input from '@/src/components/shared/Input'
-import RoundedIcon from '@/src/components/shared/RoundedIcon'
-import { StyledText } from '@/src/components/shared/StyledText'
-import { useNavigation } from 'expo-router'
-import { useEffect, useState } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack/types'
-import { useAuth } from '@/src/contexts/AuthContext'
-import Colors from '@/src/constants/Colors'
+import { ActivityIndicator, StyleSheet, View } from "react-native";
+import Button from "@/src/components/shared/Button";
+import Input from "@/src/components/shared/Input";
+import RoundedIcon from "@/src/components/shared/RoundedIcon";
+import { StyledText } from "@/src/components/shared/StyledText";
+import { useNavigation } from "expo-router";
+import { useEffect, useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types";
+import { useAuth } from "@/src/contexts/AuthContext";
+import Colors from "@/src/constants/Colors";
 
 export default function LoginScreen() {
-  const { signIn, loading } = useAuth()
+  const { signIn, loading } = useAuth();
 
-  const navigation = useNavigation<NativeStackNavigationProp<any>>()
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
-  const [userData, setUserData] = useState({ email: '', password: '' })
+  const [userData, setUserData] = useState({ email: "", password: "" });
 
   const handleInputChange = (name: string, value: string) => {
     setUserData((prevData) => ({
       ...prevData,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <View style={styles.container}>
         <View style={styles.header}>
           <RoundedIcon icon="lock" />
@@ -41,18 +41,18 @@ export default function LoginScreen() {
 
         <View style={styles.form}>
           <Input
-            onChangeText={(text) => handleInputChange('email', text)}
+            onChangeText={(text) => handleInputChange("email", text)}
             value={userData.email}
             label="E-mail"
           />
           <Input
-            onChangeText={(text) => handleInputChange('password', text)}
+            onChangeText={(text) => handleInputChange("password", text)}
             value={userData.password}
             label="Senha"
           />
 
           <StyledText
-            onPress={() => navigation.navigate('forgot-password')}
+            onPress={() => navigation.navigate("forgot-password")}
             style={{ color: Colors.primary }}
           >
             Esqueci a senha
@@ -65,8 +65,9 @@ export default function LoginScreen() {
           <ActivityIndicator size="large" color={Colors.primary} />
         ) : (
           <Button
-            onPress={() =>
-              signIn({ email: userData.email, password: userData.password })
+            onPress={
+              () => navigation.navigate("(root)")
+              // signIn({ email: userData.email, password: userData.password })
             }
             label="Entrar na conta"
           />
@@ -79,33 +80,33 @@ export default function LoginScreen() {
         /> */}
       </View>
     </SafeAreaView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
+    display: "flex",
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
     minHeight: 550,
     paddingVertical: 30,
     paddingHorizontal: 20,
     // justifyContent: "center",
   },
 
-  header: { display: 'flex', alignItems: 'center', gap: 12 },
+  header: { display: "flex", alignItems: "center", gap: 12 },
 
   headerTitle: {
     fontSize: 24,
   },
 
-  headerDescription: { fontSize: 18, textAlign: 'center', color: '#858585' },
+  headerDescription: { fontSize: 18, textAlign: "center", color: "#858585" },
 
   form: {
-    display: 'flex',
+    display: "flex",
     gap: 20,
-    height: '100%',
-    width: '100%',
+    height: "100%",
+    width: "100%",
     marginTop: 20,
   },
 
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
   actions: {
     paddingHorizontal: 20,
     paddingVertical: 30,
-    display: 'flex',
+    display: "flex",
     gap: 12,
   },
-})
+});
